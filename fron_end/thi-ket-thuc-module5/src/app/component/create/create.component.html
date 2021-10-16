@@ -1,0 +1,147 @@
+<form [formGroup]="createForm" (ngSubmit)="onSubmit()" novalidate>
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-6">
+      <div class="alert alert-primary " role="alert" STYLE="text-align: center">
+        <h5>Thêm mới xe khách</h5>
+      </div>
+    </div>
+    <div class="col-3"></div>
+  </div>
+  <div class="row">
+    <div class="col-1"></div>
+    <div class="col-4">
+      <div class="form-group">
+        <label>Loại xe(*)</label>
+        <input type="text" formControlName="carType" class="form-control"/>
+<!--        <span class="validate" *ngIf="createForm.controls.carType.hasError('required') &&-->
+<!--         carService.controls.carType.touched">-->
+<!--           Vui lòng nhập loại xe!-->
+<!--          </span>-->
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="form-group">
+        <label>Tên nhà xe(*)</label>
+        <input formControlName="name" name="name" type="text" class="form-control"/>
+<!--        <span class="validate" *ngIf="createForm.controls.name.hasError('required') &&-->
+<!--         createForm.controls.name.touched">-->
+<!--            Tên nhà xe không được để trống!-->
+<!--          </span>-->
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-1"></div>
+    <div class="col-3">
+      <div class="form-group">
+        <label>Địa điểm đi(*)</label>
+        <select class="form-control" formControlName="startingPoint" [compareWith]="compareC">
+          <option *ngFor="let startingPoint of placeList" [ngValue]="startingPoint"
+                  selected>{{startingPoint.name}}</option>
+        </select>
+<!--        <span class="validate" *ngIf="createForm.controls.startingPoint.hasError('required') &&-->
+<!--         createForm.controls.startingPoint.touched">-->
+<!--            Vui lòng chọn địa điểm đi!-->
+<!--          </span>-->
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="form-group">
+        <label>Địa điểm đến(*)</label>
+        <select class="form-control" formControlName="destination"  [compareWith]="compareFnG">
+          <option *ngFor="let destination of placeList" [ngValue]="destination"
+                  selected>{{destination.name}}</option>
+        </select>
+<!--        <span class="validate" *ngIf="createForm.controls.destination.hasError('required') &&-->
+<!--        createForm.controls.destination.touched">-->
+<!--            Vui lòng chọn địa điểm đến!-->
+<!--          </span>-->
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="form-group">
+        <label>Phone Number(*)</label>
+        <input formControlName="phone"  type="text" class="form-control"/>
+<!--        <span class="validate"-->
+<!--              *ngIf="createForm.controls.phone.hasError('required') &&-->
+<!--              createForm.controls.phone.touched">-->
+<!--              Vui lòng nhập số điện thoại-->
+<!--        </span>-->
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-1"></div>
+    <div class="col-3">
+      <div class="form-group ">
+        <label>Email(*)</label>
+        <input formControlName="email" type="text" class="form-control"/>
+<!--        <span class="validate"-->
+<!--              *ngIf="createForm.controls.email.hasError('required') &&-->
+<!--             createForm.controls.email.touched">-->
+<!--              Vui lòng nhập email!-->
+<!--        </span>-->
+<!--        <span class="validate"-->
+<!--              *ngIf="createForm.controls.email.hasError('email') &&-->
+<!--               createForm.controls.email.touched">-->
+<!--              Email không đúng định dạng!-->
+<!--        </span>-->
+      </div>
+
+    </div>
+    <div class="col-4">
+      <div class="form-group">
+        <label>Giờ đi(*)</label>
+        <input formControlName="starTime"  type="text" class="form-control"/>
+<!--        <span class="validate"-->
+<!--              *ngIf="createForm.controls.starTime.hasError('required') &&-->
+<!--              createForm.controls.starTime.touched">-->
+<!--              Vui lòng nhập giờ đi!-->
+<!--        </span>-->
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="form-group">
+        <label>Giờ đến(*)</label>
+        <input formControlName="endTime"  type="text" class="form-control"/>
+<!--        <span class="validate"-->
+<!--              *ngIf="createForm.controls.endTime.hasError('required') &&-->
+<!--              createForm.controls.endTime.touched">-->
+<!--              Vui lòng nhập giờ đến!-->
+<!--        </span>-->
+      </div>
+    </div>
+    <div class="col-1"></div>
+  </div>
+  <div class="row">
+    <div class="col-1"></div>
+    <div class="col-10">
+      <div style="display: inline-block">
+        <button type="submit" class="btn btn-success my-1">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+               class="bi bi-calendar-check" viewBox="0 0 16 16">
+            <path
+              d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
+            <path
+              d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+          </svg>
+          Save
+        </button>
+      </div>
+      <div style="display: inline-block; margin-left: 1115px">
+        <a routerLink="/">
+          <button type="button" class="btn btn-warning my-1">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                 class="bi bi-arrow-return-left" viewBox="0 0 16 16">
+              <path fill-rule="evenodd"
+                    d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5z"/>
+            </svg>
+            Back
+          </button>
+        </a>
+      </div>
+    </div>
+    <div class="col-1"></div>
+  </div>
+</form>

@@ -1,0 +1,100 @@
+<div style="text-align: center">
+  <h1>Danh sách các xe đăng ký ở bến xe Đà Nẵng</h1>
+</div>
+<div style="margin-top: 20px">
+  <div class="container border pt-5 mt-5 ">
+    <div style="margin-left: 105px">
+      <a routerLink="/create">
+        <button type="button" class="btn btn-success " style="color: white">
+          <svg xmln="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi
+                    bi-pencil-square" viewBox="0 0 16 16">
+            <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75
+                    2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.50 0 0
+                    .196-.12l6.813-6.814z"/>
+            <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0
+                    1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1
+                    2.5v11z"/>
+          </svg>
+          Thêm mới
+        </button>
+      </a>
+    </div>
+    <div>
+      <table class="table table-bordered table-striped">
+        <thead>
+        <tr style="text-align: center" class="table-primary">
+          <th>ID</th>
+          <th>Loại xe</th>
+          <th>Tên nhà xe</th>
+          <th>Điểm đi</th>
+          <th>Điểm đến</th>
+          <th>Số điện thoại</th>
+          <th>Email</th>
+          <th>Giờ đi</th>
+          <th>Giờ đến</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let car of cars" style="text-align: center">
+          <td>{{car.id}}</td>
+          <td>{{car.carType}}</td>
+          <td>{{car.name}}</td>
+          <td>{{car.startingPoint.name}}</td>
+          <td>{{car.destination.name}}</td>
+          <td>{{car.phone}}</td>
+          <td>{{car.email}}</td>
+          <td>{{car.starTime}}</td>
+          <td>{{car.endTime}}</td>
+          <td>
+            <a [routerLink]="['/edit', car.id]">
+              <button class="btn btn-info">
+                <svg xmln="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi
+                    bi-pencil-square" viewBox="0 0 16 16">
+                  <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75
+                    2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.50 0 0
+                    .196-.12l6.813-6.814z"/>
+                  <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0
+                    1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1
+                    2.5v11z"/>
+                </svg>
+                Edit
+              </button>
+            </a>
+          </td>
+          <td>
+            <button class="btn btn-danger" (click)="deleteDialog(car.id)">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                   class="bi bi-trash" viewBox="0 0 16 16">
+                <path
+                  d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                <path fill-rule="evenodd"
+                      d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+              </svg>
+              <span>Delete</span>
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+<!--      <pagination-controls (pageChange)="p = $event" class="text-center"></pagination-controls>-->
+    </div>
+  </div>
+  <div style="margin-left: 550px">
+    <ul class="pagination ">
+
+      <li class="page-item "><a class="page-link bg-dark" style="color: #fff028" (click)="firstPage()">First</a>
+      </li>
+      <li class="page-item "><a class="page-link bg-dark " style="color: #fff028" (click)="previousPage()">Previous</a>
+      </li>
+      <li class="page-item"><a class="page-link bg-dark " style="color: #fff028">{{page + 1}}</a></li>
+      <li class="page-item"><p class="page-link bg-dark" style="color: #fff028">/</p></li>
+      <li class="page-item"><a class="page-link bg-dark " style="color: #fff028">{{totalPage}}</a></li>
+      <li class="page-item"><a class="page-link bg-dark " style="color: #fff028" (click)="nextPage()">Next</a>
+      </li>
+      <li class="page-item "><a class="page-link bg-dark " style="color: #fff028" (click)="lastPage()">Last</a>
+      </li>
+    </ul>
+  </div>
+</div>

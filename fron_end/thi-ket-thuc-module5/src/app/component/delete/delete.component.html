@@ -1,0 +1,15 @@
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title">Xác nhận xoá</h5>
+    </div>
+    <div class="modal-body">
+      <input hidden type="text" name="id" id="customerId">
+      <p>Bạn có muốn xoá thông tin của xe khách có số xe <span style="color:red;">{{name}}</span>?</p>
+    </div>
+    <div class="modal-footer">
+      <input mat-dialog-close type="button" class="btn btn-default" value="Không">
+      <input type="submit" class="btn btn-danger" (click)="delete()" value="Có">
+    </div>
+  </div>
+</div>
